@@ -55,7 +55,7 @@ import com.vaklinov.zcashui.OSUtil.OS_TYPE;
 
 
 /**
- * Calls zcash-cli
+ * Calls litecoinz-cli
  *
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
@@ -95,7 +95,7 @@ public class ZCashClientCaller
 	}
 
 
-	// ZCash client program and daemon
+	// LitecoinZ client program and daemon
 	private File zcashcli, zcashd;
 
 
@@ -114,8 +114,8 @@ public class ZCashClientCaller
 		if ((zcashcli == null) || (!zcashcli.exists()))
 		{
 			throw new IOException(
-				"The ZCash installation directory " + installDir + " needs to contain " +
-				"the command line utilities zcashd and zcash-cli. zcash-cli is missing!");
+				"The LitecoinZ installation directory " + installDir + " needs to contain " +
+				"the command line utilities litecoinzd and litecoinz-cli. litecoinz-cli is missing!");
 		}
 		
 		zcashd = new File(dir, OSUtil.getZCashd());
@@ -127,8 +127,8 @@ public class ZCashClientCaller
 		if (zcashd == null || (!zcashd.exists()))
 		{
 		    throw new IOException(
-		    	"The ZCash command line utility " + zcashcli.getCanonicalPath() + 
-		    	" was found, but zcashd was not found!");
+		    	"The LitecoinZ command line utility " + zcashcli.getCanonicalPath() + 
+		    	" was found, but litecoinzd was not found!");
 		}
 	}
 
@@ -306,7 +306,7 @@ public class ZCashClientCaller
 	}
 
 
-	// ./src/zcash-cli listunspent only returns T addresses it seems
+	// ./src/litecoinz-cli listunspent only returns T addresses it seems
 	public synchronized String[] getWalletPublicAddressesWithUnspentOutputs()
 		throws WalletCallException, IOException, InterruptedException
 	{
@@ -323,7 +323,7 @@ public class ZCashClientCaller
      }
 
 
-	// ./zcash-cli listreceivedbyaddress 0 true
+	// ./litecoinz-cli listreceivedbyaddress 0 true
 	public synchronized String[] getWalletAllPublicAddresses()
 		throws WalletCallException, IOException, InterruptedException
 	{
@@ -477,7 +477,7 @@ public class ZCashClientCaller
 		}
 
 		// The JSON Builder has a problem with double values that have no fractional part
-		// it serializes them as integers that ZCash does not accept. So we do a replacement
+		// it serializes them as integers that LitecoinZ does not accept. So we do a replacement
 		// TODO: find a better/cleaner way to format the amount
 		toArgument.set("amount", "\uFFFF\uFFFF\uFFFF\uFFFF\uFFFF");
 
@@ -669,7 +669,7 @@ public class ZCashClientCaller
 
 
     // Wallet locks check - an unencrypted wallet will give an error
-	// zcash-cli walletlock
+	// litecoinz-cli walletlock
 	// error: {"code":-15,"message":"Error: running with an unencrypted wallet, but walletlock was called."}
 	public synchronized boolean isWalletEncrypted()
    		throws WalletCallException, IOException, InterruptedException
@@ -727,11 +727,11 @@ public class ZCashClientCaller
 	/**
 	 * Encrypts the wallet. Typical success/error use cases are:
 	 *
-	 * ./zcash-cli encryptwallet "1234"
+	 * ./litecoinz-cli encryptwallet "1234"
 	 * wallet encrypted; Bitcoin server stopping, restart to run with encrypted wallet.
 	 * The keypool has been flushed, you need to make a new backup.
 	 *
-	 * ./zcash-cli encryptwallet "1234"
+	 * ./litecoinz-cli encryptwallet "1234"
 	 * error: {"code":-15,"message":"Error: running with an encrypted wallet, but encryptwallet was called."}
 	 *
 	 * @param password

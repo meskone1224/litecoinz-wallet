@@ -119,13 +119,13 @@ public class DashboardPanel
 		
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 9));
 		JLabel logoLabel = new JLabel(new ImageIcon(
-			this.getClass().getClassLoader().getResource("images/zcash-logo-square3.png")));
+			this.getClass().getClassLoader().getResource("images/litecoinz-logo-square3.png")));
 		tempPanel.add(logoLabel);
 		//tempPanel.add(new JLabel(" "));
-		JLabel zcLabel = new JLabel("Cash Wallet     ");
+		JLabel zcLabel = new JLabel("LitecoinZ Wallet");
 		zcLabel.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 32));
 		tempPanel.add(zcLabel);
-		tempPanel.setToolTipText("Powered by ZCash\u00AE");
+		tempPanel.setToolTipText("Powered by LitecoinZ\u00AE");
 		balanceStatusPanel.add(tempPanel, BorderLayout.WEST);
 				
 		JLabel transactionHeadingLabel = new JLabel(
@@ -363,7 +363,7 @@ public class DashboardPanel
 					       cpuPercentage + "</span>";
 		}
 
-		// TODO: what if ZCash directory is non-default...
+		// TODO: what if LitecoinZ directory is non-default...
 		File walletDAT = new File(OSUtil.getBlockchainDirectory() + "/wallet.dat");
 		
 		if (this.OSInfo == null)
@@ -382,7 +382,7 @@ public class DashboardPanel
 		}
 		
 		String text =
-			"<html><span style=\"font-weight:bold;color:#303030\">zcashd</span> status: " + 
+			"<html><span style=\"font-weight:bold;color:#303030\">litecoinzd</span> status: " + 
 		    daemonStatus + ",  " + runtimeInfo + " <br/>" +
 			"Wallet: <span style=\"font-weight:bold;color:#303030\">" + walletDAT.getCanonicalPath() + "</span>" + 
 			walletEncryption + " <br/> " +
@@ -406,7 +406,7 @@ public class DashboardPanel
 			return;
 		}
 		
-		// TODO: Get the start date right after ZCash release - from first block!!!
+		// TODO: Get the start date right after LitecoinZ release - from first block!!!
 		final Date startDate = new Date("28 Oct 2016 02:00:00 GMT");
 		final Date nowDate = new Date(System.currentTimeMillis());
 		

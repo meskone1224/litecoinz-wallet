@@ -51,7 +51,7 @@ public class StartupProgressDialog extends JFrame {
     {
         this.clientCaller = clientCaller;
         
-        URL iconUrl = this.getClass().getClassLoader().getResource("images/zcash-logo-large.png");
+        URL iconUrl = this.getClass().getClassLoader().getResource("images/litecoinz-logo-large.png");
         imageIcon = new ImageIcon(iconUrl);
         imageLabel.setIcon(imageIcon);
         imageLabel.setBorder(BorderFactory.createEmptyBorder(16, 16, 0, 16));
@@ -62,7 +62,7 @@ public class StartupProgressDialog extends JFrame {
         contentPane.add(imageLabel, BorderLayout.NORTH);
 		JLabel zcashWalletLabel = new JLabel(
 			"<html><span style=\"font-style:italic;font-weight:bold;font-size:2.65em\">" + 
-		    "ZCash<span style=\"font-style:italic;font-weight:bold;font-size:1.5em;vertical-align:super\">" + 
+		    "LitecoinZ<span style=\"font-style:italic;font-weight:bold;font-size:1.5em;vertical-align:super\">" + 
 		    "\u00AE</span> Wallet</span></html>");
 		zcashWalletLabel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 		// todo - place in a panel with flow center
@@ -92,7 +92,7 @@ public class StartupProgressDialog extends JFrame {
 //                performOSXBundleLaunch();
 //        }
         
-        Log.info("Splash: checking if zcashd is already running...");
+        Log.info("Splash: checking if litecoinzd is already running...");
         boolean shouldStartZCashd = false;
         try {
             clientCaller.getDaemonRawRuntimeInfo();
@@ -107,13 +107,13 @@ public class StartupProgressDialog extends JFrame {
         }
         
         if (!shouldStartZCashd) {
-        	Log.info("Splash: zcashd already running...");
+        	Log.info("Splash: litecoinzd already running...");
             // What if started by hand but taking long to initialize???
 //            doDispose();
 //            return;
         } else
         {
-        	Log.info("Splash: zcashd will be started...");
+        	Log.info("Splash: litecoinzd will be started...");
         }
         
         final Process daemonProcess = 
@@ -155,7 +155,7 @@ public class StartupProgressDialog extends JFrame {
         if (daemonProcess != null) // Shutdown only if we started it
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-            	Log.info("Stopping zcashd because we started it - now it is alive: " + 
+            	Log.info("Stopping litecoinzd because we started it - now it is alive: " + 
                 		           StartupProgressDialog.this.isAlive(daemonProcess));
                 try 
                 {
@@ -165,7 +165,7 @@ public class StartupProgressDialog extends JFrame {
 	                while (!StartupProgressDialog.this.waitFor(daemonProcess, 3000))
 	                {
 	                	long end = System.currentTimeMillis();
-	                	Log.info("Waiting for " + ((end - start) / 1000) + " seconds for zcashd to exit...");
+	                	Log.info("Waiting for " + ((end - start) / 1000) + " seconds for litecoinzd to exit...");
 	                	
 	                	if (end - start > 10 * 1000)
 	                	{
@@ -180,14 +180,14 @@ public class StartupProgressDialog extends JFrame {
 	                }
 	            
 	                if (StartupProgressDialog.this.isAlive(daemonProcess)) {
-	                	Log.info("zcashd is still alive although we tried to stop it. " +
+	                	Log.info("litecoinzd is still alive although we tried to stop it. " +
 	                                           "Hopefully it will stop later!");
-	                        //System.out.println("zcashd is still alive, killing forcefully");
+	                        //System.out.println("litecoinzd is still alive, killing forcefully");
 	                        //daemonProcess.destroyForcibly();
 	                    } else
-	                    	Log.info("zcashd shut down successfully");
+	                    	Log.info("litecoinzd shut down successfully");
                 } catch (Exception bad) {
-                	Log.error("Couldn't stop zcashd!", bad);
+                	Log.error("Couldn't stop litecoinzd!", bad);
                 }
             }
         });
