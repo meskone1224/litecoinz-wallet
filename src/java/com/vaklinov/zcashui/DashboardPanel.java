@@ -499,7 +499,7 @@ public class DashboardPanel
 			return;
 		}
 		
-		// Format double numbers - else sometimes we get exponential notation 1E-4 ZEC
+		// Format double numbers - else sometimes we get exponential notation 1E-4 LTZ
 		DecimalFormat df = new DecimalFormat("########0.00######");
 		
 		String transparentBalance = df.format(balance.transparentBalance);
@@ -517,11 +517,11 @@ public class DashboardPanel
 		String text =
 			"<html>" + 
 		    "<span style=\"font-family:monospace;font-size:1em;" + color1 + "\">Transparent balance: <span style=\"font-size:1.1em;\">" + 
-				transparentUCBalance + " ZEC </span></span><br/> " +
+				transparentUCBalance + " LTZ </span></span><br/> " +
 			"<span style=\"font-family:monospace;font-size:1em;" + color2 + "\">Private (Z) balance: <span style=\"font-weight:bold;font-size:1.1em;\">" + 
-		    	privateUCBalance + " ZEC </span></span><br/> " +
+		    	privateUCBalance + " LTZ </span></span><br/> " +
 			"<span style=\"font-family:monospace;font-size:1em;" + color3 + "\">Total (Z+T) balance: <span style=\"font-weight:bold;font-size:1.35em;\">" + 
-		    	totalUCBalance + " ZEC </span></span>" +
+		    	totalUCBalance + " LTZ </span></span>" +
 			"<br/>  </html>";
 		
 		this.walletBalanceLabel.setText(text);
@@ -535,9 +535,9 @@ public class DashboardPanel
 					  "Unconfirmed (unspendable) balance is being shown due to an<br/>" + 
 		              "ongoing transaction! Actual confirmed (spendable) balance is:<br/>" +
 		              "<span style=\"font-size:5px\"><br/></span>" +
-					  "Transparent: " + transparentBalance + " ZEC<br/>" +
-		              "Private ( Z ): <span style=\"font-weight:bold\">" + privateBalance + " ZEC</span><br/>" +
-					  "Total ( Z+T ): <span style=\"font-weight:bold\">" + totalBalance + " ZEC</span>" +
+					  "Transparent: " + transparentBalance + " LTZ<br/>" +
+		              "Private ( Z ): <span style=\"font-weight:bold\">" + privateBalance + " LTZ</span><br/>" +
+					  "Total ( Z+T ): <span style=\"font-weight:bold\">" + totalBalance + " LTZ</span>" +
 					  "</html>";
 		}
 		
